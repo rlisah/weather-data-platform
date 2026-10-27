@@ -2,6 +2,17 @@ import os
 import snowflake.connector
 from cryptography.hazmat.primitives import serialization
 
+# Diagnostico do Secret RSA
+pem = os.environ.get("SNOWFLAKE_PRIVATE_KEY", "")
+
+print("=== DIAGNOSTICO RSA ===")
+print("Secret existe:", bool(pem))
+print("Inicio correto:", pem.strip().startswith("-----BEGIN ENCRYPTED PRIVATE KEY-----"))
+print("Fim correto:", pem.strip().endswith("-----END ENCRYPTED PRIVATE KEY-----"))
+print("Quantidade de linhas:", len(pem.splitlines()))
+print("Contem quebra de linha literal:", "\\n" in pem)
+print("=======================")
+
 
 def main():
     private_key = serialization.load_pem_private_key(

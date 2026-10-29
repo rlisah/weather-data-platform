@@ -49,7 +49,10 @@ def connect_snowflake():
         role=os.environ["SNOWFLAKE_ROLE"],
         database=DATABASE,
         autocommit=False,
-        login_timeout=30
+        login_timeout=30,
+        session_parameters={
+        "TIMEZONE": "UTC"
+        }
     )
 
 

@@ -37,3 +37,6 @@ jobs:
 
       - name: Transform Bronze into Silver
         run: python python/run_silver.py
+        
+      - name: Transform Silver into Gold
+        run: python python/run_gold.py

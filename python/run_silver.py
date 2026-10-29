@@ -33,7 +33,10 @@ def connect_snowflake():
         warehouse=os.environ["SNOWFLAKE_WAREHOUSE"],
         role=os.environ["SNOWFLAKE_ROLE"],
         database="WEATHER_DATA_PLATFORM",
-        autocommit=False
+        autocommit=False,
+        session_parameters={
+        "TIMEZONE": "UTC"
+    }
     )
 
 

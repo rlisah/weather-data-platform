@@ -116,8 +116,14 @@ def write_manifest(
         VALUES (
             %s, %s, %s, %s,
             %s, %s, %s, %s,
-            %s, %s, %s,
-CONVERT_TIMEZONE('UTC', CURRENT_TIMESTAMP())::TIMESTAMP_NTZ, %s
+            %s, %s, %s, 
+            CONVERT_TIMEZONE(
+                'UTC',
+                CURRENT_TIMESTAMP()
+            )::TIMESTAMP_NTZ,
+            %s
+        )
+        """,
         (
             batch_id,
             SOURCE,
